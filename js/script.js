@@ -2,7 +2,8 @@ var app = new Vue({
     el:"#app",
 
     data: {
-        indirizzo: ""
+        indirizzo: "",
+        indirizzi : []
     },
     mounted() {
         // this.test()
@@ -17,6 +18,7 @@ var app = new Vue({
             console.log("sei un grande");
         },
         getEmail(){
+
             axios 
                 .get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then(email => {
@@ -24,6 +26,18 @@ var app = new Vue({
                 });
             
             console.log(this.indirizzo);
+            for(let i=0 ; i < 10 ; i++){
+                // console.log(this.indirizzi);
+                axios 
+                .get('https://flynn.boolean.careers/exercises/api/random/mail')
+                .then(email => {
+                    this.indirizzo = email.data.response;
+                });
+                if(!this.indirizzi.includes(this.indirizzo)){
+                    this.indirizzi.push(this.indirizzo)
+                }
+            }
+            console.log(this.indirizzi);
         }
     },
 });
