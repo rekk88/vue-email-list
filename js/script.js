@@ -7,11 +7,11 @@ var app = new Vue({
     },
     mounted() {
         // this.test()
-        axios 
-            .get('https://flynn.boolean.careers/exercises/api/random/mail')
-            .then(email => {
-                this.indirizzo = email.data.response;
-            });
+        // axios 
+        //     .get('https://flynn.boolean.careers/exercises/api/random/mail')
+        //     .then(email => {
+        //         this.indirizzo = email.data.response;
+        //     });
     },
     methods: {
         test(){
@@ -19,23 +19,24 @@ var app = new Vue({
         },
         getEmail(){
 
-            axios 
-                .get('https://flynn.boolean.careers/exercises/api/random/mail')
-                .then(email => {
-                    this.indirizzo = email.data.response;
-                });
+            // axios 
+            //     .get('https://flynn.boolean.careers/exercises/api/random/mail')
+            //     .then(email => {
+            //         this.indirizzo = email.data.response;
+            //     });
             
-            console.log(this.indirizzo);
+            // console.log(this.indirizzo);
             for(let i=0 ; i < 10 ; i++){
                 // console.log(this.indirizzi);
-                axios 
+                 axios 
                 .get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then(email => {
+                    // this.indirizzi.push(email.data.response);
                     this.indirizzo = email.data.response;
+                    this.indirizzi.push(this.indirizzo);
                 });
-                if(!this.indirizzi.includes(this.indirizzo)){
-                    this.indirizzi.push(this.indirizzo)
-                }
+               
+                // this.indirizzi.push(this.indirizzo)
             }
             console.log(this.indirizzi);
         }
